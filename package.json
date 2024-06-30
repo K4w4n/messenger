@@ -1,0 +1,31 @@
+{
+  "name": "messenger",
+  "version": "1.0.0",
+  "description": "A chat service",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vitest",
+    "start": "node build/index.js",
+    "build": "tsc",
+    "dev": "nodemon src/index.ts"
+  },
+  "author": "k4w4n",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "globals": "^15.6.0",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "vitest": "^1.6.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "inversify": "^6.0.2",
+    "jsonwebtoken": "^9.0.2",
+    "knex": "^3.1.0",
+    "mysql2": "^3.10.1",
+    "uuid": "^10.0.0",
+    "yup": "^1.4.0"
+  }
+}
