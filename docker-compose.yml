@@ -9,6 +9,10 @@ services:
       - .:/usr/src/app
       - /usr/src/app/node_modules
     command: npm run dev
+    depends_on:
+      - mysql
+      - rabbitmq
+      - minio
 
   mysql:
     image: mysql:8
@@ -20,5 +24,27 @@ services:
       MYSQL_ROOT_PASSWORD: example
       MYSQL_DATABASE: app_db
 
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: user
+      RABBITMQ_DEFAULT_PASS: password
+
+  minio:
+    image: minio/minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: minio123
+    command: server /data --console-address ":9001"
+
 volumes:
   mysql_data:
+  minio_data:
