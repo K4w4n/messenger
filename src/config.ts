@@ -1,4 +1,5 @@
 import "dotenv/config";
+import AWS from "aws-sdk";
 
 export const appPort: number = Number(process.env.APP_PORT);
 
