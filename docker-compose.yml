@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  messenger-app:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm run dev
+
+  mysql:
+    image: mysql:8
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: app_db
+
+volumes:
+  mysql_data:
