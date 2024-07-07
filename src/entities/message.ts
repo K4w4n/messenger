@@ -3,7 +3,9 @@ import { Entity } from "./entity";
 
 export interface Message extends Entity {
     chatId: UUID;
-    encryptedMessage: string;
+    encryptedMessage?: string;
     senderId: UUID;
     isDeleted: boolean;
+    fileExtension: string; 
+    fileSrc?: string
 };
